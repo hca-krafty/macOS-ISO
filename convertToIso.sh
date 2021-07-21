@@ -1,17 +1,19 @@
 ## Writen by Gabriel Kraft
 ## For beta versions manual chaning of the file will be required
+## will need to change based on which macOS version desired
 OSNAME="Monterey"
 OSVERSION="12.0"
-IMAGESIZE="13500m"
-VOLNAME="Monterey"
 INSTALL_APP="Monterey\ beta"
+## will need to change based on .app filesize
+IMAGESIZE="13500m"
+
 
 
 
 # Create disk image
 echo "##### Creating Disk Image #####"
-echo "hdiutil create -o /tmp/$OSNAME -size $IMAGESIZE -volname $VOLNAME -layout SPUD -fs HFS+J"
-hdiutil create -o /tmp/$OSNAME -size $IMAGESIZE -volname $VOLNAME -layout SPUD -fs HFS+J
+echo "hdiutil create -o /tmp/$OSNAME -size $IMAGESIZE -volname $OSNAME -layout SPUD -fs HFS+J"
+hdiutil create -o /tmp/$OSNAME -size $IMAGESIZE -volname $OSNAME -layout SPUD -fs HFS+J
 echo " "
 
 # mount disk image
