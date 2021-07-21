@@ -1,25 +1,44 @@
-
-OSNAME="Mojave"
-OSVERSION="10.14"
-IMAGESIZE="6000m"
-VOLNAME="Mojave"
+## Writen by Gabriel Kraft
+## For beta versions manual chaning of the file will be required
+OSNAME="Monterey"
+OSVERSION="12.0"
+IMAGESIZE="13500m"
+VOLNAME="Monterey"
+INSTALL_APP="Monterey\ beta"
 
 
 
 # Create disk image
+echo "##### Creating Disk Image #####"
+echo "hdiutil create -o /tmp/$OSNAME -size $IMAGESIZE -volname $VOLNAME -layout SPUD -fs HFS+J"
 hdiutil create -o /tmp/$OSNAME -size $IMAGESIZE -volname $VOLNAME -layout SPUD -fs HFS+J
+echo " "
 
 # mount disk image
+echo "##### Mounting Disk Image #####"
+echo "hdiutil attach /tmp/$OSNAME.dmg -noverify -mountpoint /Volumes/$OSNAME"
 hdiutil attach /tmp/$OSNAME.dmg -noverify -mountpoint /Volumes/$OSNAME
+echo " "
 
 # create install media
-sudo /Applications/Install\ macOS\ $OSNAME.app/Contents/Resources/createinstallmedia --volume /Volumes/$OSNAME
+echo "##### Creating Install Media #####"
+echo "sudo /Applications/Install\ macOS\ $OSNAME.app/Contents/Resources/createinstallmedia --volume /Volumes/$OSNAME --nointeraction"
+sudo /Applications/Install\ macOS\ $OSNAME.app/Contents/Resources/createinstallmedia --volume /Volumes/$OSNAME --nointeraction
+echo " "
 
 # detach mounted volume
-#sudo hdiutil detach /Volumes/Install macOS\ $OSNAME
+echo "##### detaching mounted volume #####"
+echo "sudo hdiutil detach /Volumes/Install\ macOS\ $INSTALL_APP"
+sudo hdiutil detach /Volumes/Install\ macOS\ $INSTALL_APP
+echo " "
 
 #convert image to .cdr
+echo "##### Convert image to .cdr #####"
+echo "hdiutil convert /tmp/$OSNAME.dmg -format UDTO -o /tmp/$OSNAME.cdr"
 hdiutil convert /tmp/$OSNAME.dmg -format UDTO -o /tmp/$OSNAME.cdr
+echo " "
 
 #rename to .iso
-mv /tmp/macOS-$OSVERSION-$OSNAME.cdr ~/Virtual\ Machines/ISOs/macOS-$OSVERSION-$OSNAME.iso
+echo "##### Moving to dir Virtual Machines #####"
+echo "mv /tmp/$OSNAME.cdr ~/Virtual\ Machines/ISOs/macOS-$OSVERSION-$OSNAME.iso"
+mv /tmp/$OSNAME.cdr ~/Virtual\ Machines/ISOs/macOS-$OSVERSION-$INSTALL_APP.iso
