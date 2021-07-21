@@ -7,7 +7,8 @@ INSTALL_APP="Monterey\ beta"
 ## will need to change based on .app filesize
 IMAGESIZE="13500m"
 
-
+#clear the screen
+clear
 
 
 # Create disk image
