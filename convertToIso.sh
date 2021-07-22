@@ -1,9 +1,8 @@
 ## Writen by Gabriel Kraft
-## For beta versions manual chaning of the file will be required
+## For beta versions manual changing of the file will be required because Apple likes to add " beta" at the end which causes the variables to not work.
 ## will need to change based on which macOS version desired
 OSNAME="Monterey"
 OSVERSION="12.0"
-INSTALL_APP="Monterey\ beta"
 ## will need to change based on .app filesize
 IMAGESIZE="13500m"
 
@@ -31,8 +30,8 @@ echo " "
 
 # detach mounted volume
 echo "##### detaching mounted volume #####"
-echo "sudo hdiutil detach /Volumes/Install\ macOS\ $INSTALL_APP"
-sudo hdiutil detach /Volumes/Install\ macOS\ $INSTALL_APP
+echo "sudo hdiutil detach /Volumes/Install\ macOS\ $OSNAME"
+sudo hdiutil detach /Volumes/Install\ macOS\ $OSNAME
 echo " "
 
 #convert image to .cdr
@@ -44,4 +43,4 @@ echo " "
 #rename to .iso
 echo "##### Moving to dir Virtual Machines #####"
 echo "mv /tmp/$OSNAME.cdr ~/Virtual\ Machines/ISOs/macOS-$OSVERSION-$OSNAME.iso"
-mv /tmp/$OSNAME.cdr ~/Virtual\ Machines/ISOs/macOS-$OSVERSION-$INSTALL_APP.iso
+mv /tmp/$OSNAME.cdr ~/Virtual\ Machines/ISOs/macOS-$OSVERSION-$OSNAME.iso
