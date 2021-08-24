@@ -9,7 +9,6 @@ IMAGESIZE="13500m"
 #clear the screen
 clear
 
-
 # Create disk image
 echo "##### Creating Disk Image #####"
 echo "hdiutil create -o /tmp/$OSNAME -size $IMAGESIZE -volname $OSNAME -layout SPUD -fs HFS+J"
