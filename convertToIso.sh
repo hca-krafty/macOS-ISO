@@ -39,7 +39,16 @@ echo "hdiutil convert /tmp/$OSNAME.dmg -format UDTO -o /tmp/$OSNAME.cdr"
 hdiutil convert /tmp/$OSNAME.dmg -format UDTO -o /tmp/$OSNAME.cdr
 echo " "
 
-#rename to .iso
+#rename to .iso and cleanup
 echo "##### Moving to dir Virtual Machines #####"
-echo "mv /tmp/$OSNAME.cdr ~/Virtual\ Machines/ISOs/macOS-$OSVERSION-$OSNAME.iso"
-mv /tmp/$OSNAME.cdr ~/Virtual\ Machines/ISOs/macOS-$OSVERSION-$OSNAME.iso
+echo "mv /tmp/$OSNAME.cdr /Users/Shared/macOS-$OSVERSION-$OSNAME.iso"
+mv /tmp/$OSNAME.cdr /Users/Shared/macOS-$OSVERSION-$OSNAME.iso
+echo "rm /tmp/$OSNAME.dmg"
+rm /tmp/$OSNAME.dmg
+
+#announce end
+echo " "
+echo "Your install media is waiting at /Users/Shared/macOS-$OSVERSION-$OSNAME.iso"
+echo " "
+echo " "
+echo " "
